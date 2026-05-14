@@ -6,7 +6,7 @@
 <title>ספר מורשת גדוד 7481</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.5.0/docx.umd.min.js"></script>
+<script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -455,7 +455,8 @@ document.getElementById('exportDocxBtn').addEventListener('click', async () => {
   if (!entries.length) return;
   toast('מייצר DOCX...', false, 30000);
   try {
-    const { Document, Packer, Paragraph, TextRun, ImageRun, AlignmentType, ShadingType } = docx;
+    const docxLib = window.docx || window.DocxJS || docx;
+    const { Document, Packer, Paragraph, TextRun, ImageRun, AlignmentType } = docxLib;
 
     const hebrewRun = (text, opts = {}) => new TextRun({
       text, rightToLeft: true, font: { name: 'Arial' }, ...opts

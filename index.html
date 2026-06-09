@@ -267,7 +267,7 @@ function renderUI() {
     card.className = 'photo-card';
     card.innerHTML = `
       <div class="photo-img-wrap">
-        <img src="${esc(e.image_url)}" alt="תמונה ${i+1}" loading="lazy">
+        <img src="${esc(e.image_url)}?width=900&quality=65&resize=contain" alt="תמונה ${i+1}" loading="lazy">
         <span class="photo-num">${i+1}</span>
       </div>
       <div class="photo-body">
